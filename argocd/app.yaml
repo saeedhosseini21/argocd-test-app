@@ -2,13 +2,11 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: backend
-  namespace: rango
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: backend
-  namespace: rango
   labels:
     app: backend
     service: backend
@@ -25,7 +23,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: backend
-  namespace: rango
 spec:
   replicas: 1
   selector:
@@ -61,7 +58,6 @@ metadata:
   labels:
     rate-limit-policy: 'meta'
   name: route-foo
-  namespace: rango
 spec:
   parentRefs:
     - name: envoy-gateway
@@ -85,7 +81,6 @@ apiVersion: gateway.envoyproxy.io/v1alpha1
 kind: BackendTrafficPolicy
 metadata:
   name: backend-rate-limit
-  namespace: rango
 spec:
   targetSelectors:
    - group: gateway.networking.k8s.io
@@ -112,7 +107,6 @@ apiVersion: gateway.envoyproxy.io/v1alpha1
 kind: ClientTrafficPolicy
 metadata:
   name: backend-client-traffic
-  namespace: envoy-gateway
 spec:
   targetRef:
     group: gateway.networking.k8s.io
