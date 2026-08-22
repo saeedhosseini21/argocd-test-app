@@ -98,10 +98,10 @@ spec:
             - headers:
                 - name: ':authority'
                   type: RegularExpression
-                  value: "test.harburz.com.*"
+                  value: "test.asdad.com.*"
                 - name: ':path'
                   type: RegularExpression
-                  value: ".*apikey=123"
+                  value: ".*asdads=123"
 ---
 apiVersion: gateway.envoyproxy.io/v1alpha1
 kind: ClientTrafficPolicy
